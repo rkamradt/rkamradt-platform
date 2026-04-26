@@ -24,6 +24,7 @@ cd ~/github/rkamradt-platform
 Then add individual service repos as needed:
 
 ```
+/add-dir ../vehicleevent
 /add-dir ../vehicleevent-api
 /add-dir ../manufacturing-service
 ```
@@ -41,7 +42,8 @@ See [`CLAUDE.md`](CLAUDE.md) for detailed context instructions.
 
 | Service | Repository | Description |
 |---------|-----------|-------------|
-| vehicleevent-api | `~/github/vehicleevent-api` | Vehicle event ingestion and API |
+| vehicleevent | `~/github/vehicleevent` | Vehicle event services (lotqueryservice, lotupdateservice, vehiclequeryservice, vehicleupdateservice) |
+| vehicleevent-api | `~/github/vehicleevent-api` | Shared library used by vehicleevent services (not a runnable service) |
 | manufacturing-service | `~/github/manufacturing-service` | Manufacturing workflow orchestration |
 
 ## Platform Stack

@@ -18,7 +18,8 @@ The platform consists of multiple independent microservices communicating via Ka
 
 | Service | Repository Path | Purpose |
 |---------|----------------|---------|
-| vehicleevent-api | `~/github/vehicleevent-api` | Vehicle event ingestion and API |
+| vehicleevent | `~/github/vehicleevent` | Vehicle event services (lotqueryservice, lotupdateservice, vehiclequeryservice, vehicleupdateservice) |
+| vehicleevent-api | `~/github/vehicleevent-api` | Shared library/API used by vehicleevent services (not a runnable service) |
 | manufacturing-service | `~/github/manufacturing-service` | Manufacturing workflow orchestration |
 
 ## Kafka Event Registry
@@ -37,6 +38,7 @@ All services communicate via Kafka. See [`architecture/kafka-topics.md`](archite
 When working on tasks that span multiple services, use:
 
 ```
+/add-dir ../vehicleevent
 /add-dir ../vehicleevent-api
 /add-dir ../manufacturing-service
 ```
