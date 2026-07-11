@@ -49,16 +49,14 @@ Image is built and pushed by GitHub Actions on every push to `main` in the
 Update `image.tag` in `rkamradt-helm-charts/dccex-throttle/values.yaml` to roll out
 a new version, then commit and push — ArgoCD will sync automatically.
 
-## Ingress / Cloudflare Tunnel
+## Cloudflare Tunnel Access
 
-An `Ingress` resource (Traefik) is deployed with hostname `dccex.rkamradt.dev`
-(configure in `rkamradt-helm-charts/dccex-throttle/values.yaml`).
+No Kubernetes Ingress is used. Configure a public hostname in your Cloudflare Tunnel
+to route directly to the ClusterIP service:
 
-Point your Cloudflare Tunnel public hostname at:
 ```
 http://dccex-throttle.dccex-throttle.svc.cluster.local:3000
 ```
-or at the Traefik ingress controller's ClusterIP/NodePort.
 
 ## Working on this service
 
