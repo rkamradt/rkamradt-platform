@@ -40,17 +40,37 @@ See [`CLAUDE.md`](CLAUDE.md) for detailed context instructions.
 
 ## Services
 
+### Vehicle Domain
+
 | Service | Repository | Description |
 |---------|-----------|-------------|
-| vehicleevent | `~/github/vehicleevent` | Vehicle event services (lotqueryservice, lotupdateservice, vehiclequeryservice, vehicleupdateservice) |
-| vehicleevent-api | `~/github/vehicleevent-api` | Shared library used by vehicleevent services (not a runnable service) |
-| manufacturing-service | `~/github/manufacturing-service` | Manufacturing workflow orchestration |
+| vehicleevent | `~/github/vehicleevent` | Event-driven vehicle intake system — lotqueryservice, lotupdateservice, vehiclequeryservice, vehicleupdateservice |
+| vehicleevent-api | `~/github/vehicleevent-api` | Shared library providing common types and utilities for vehicleevent services (not a runnable service) |
+
+### Manufacturing Domain
+
+| Service | Repository | Description |
+|---------|-----------|-------------|
+| manufacturing-service | `~/github/manufacturing-service` | Manufacturing workflow service managing BOMs, purchase orders, work orders, and assemblies via Kafka |
+| factory-platform | `~/github/factory-platform` | Full manufacturing execution system — 10 microservices covering BOM, inventory, procurement, planning, machining, fabrication, assembly, and QA |
+
+### Financial Domain
+
+| Service | Repository | Description |
+|---------|-----------|-------------|
+| fintech | `~/github/fintech` | Banking microservices platform — account lifecycle, transaction processing, and user identity with role-based access (customer/teller/manager) |
+
+### Infrastructure
+
+| Service | Repository | Description |
+|---------|-----------|-------------|
+| api-gateway | `~/github/api-gateway` | Lightweight Go API gateway — validates Auth0 JWTs, injects user identity headers, and routes traffic to fintech and factory-platform services |
 
 ## Platform Stack
 
 - **Event Streaming**: Apache Kafka
-- **Backend Services**: Spring Boot (Java), potentially others
-- **API Gateway**: TBD
+- **Backend Services**: Spring Boot (Java), Go
+- **API Gateway**: `api-gateway` (Go, Auth0 JWT validation)
 - **CI/CD**: GitHub Actions
 - **Deployment**: ArgoCD (GitOps)
 - **Artifact Registry**: GitHub Packages
